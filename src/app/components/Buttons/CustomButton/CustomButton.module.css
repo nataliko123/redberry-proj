@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.button {
+  width: 88px;
+  height: 24px;
+  border-radius: 15px;
+  color: white;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.pink {
+  background-color: #ff66a8;
+}
+.orange {
+  background-color: #fd9a6a;
+}
+.blue {
+  background-color: #89b6ff;
+}
+.yellow {
+  background-color: #ffd86d;
+}

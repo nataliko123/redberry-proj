@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  gap: 4px;
+  border-radius: 3px;
+  border-width: 0.5px;
+  border-style: solid;
+  line-height: 150%;
+  font-family: FiraGO;
+  font-weight: 500;
+  align-items: center;
+}
+
+.buttoncontainer {
+  display: flex;
+  gap: 20px; /* This is the space between buttons */
+}
+
+.red {
+  color: #fa4d4d;
+  border-color: #fa4d4d;
+}
+
+.yellow {
+  color: #ffbe0b;
+  border-color: #ffbe0b;
+}
+
+.green {
+  color: #08a508;
+  border-color: #08a508;
+}
+
+.small {
+  width: 86px; /* Added px unit */
+  height: 26px; /* Added px unit */
+  padding: 4px;
+  font-size: 12px;
+}
+
+.big {
+  width: 106px; /* Added px unit */
+  height: 32px; /* Added px unit */
+  padding: 4px 5px;
+  font-size: 16px;
+}
+
+.big :first-child {
+  width: 18px; /* Added px unit */
+  height: 20px; /* Added px unit */
+}
+
+.small :first-child {
+  width: 16px; /* Added px unit */
+  height: 18px; /* Added px unit */
+}

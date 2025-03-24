@@ -1,0 +1,23 @@
+.replyButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #7b44e9;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.replyButton:hover {
+  opacity: 0.5;
+}
+
+.replyimg {
+  width: 16px;
+  height: 16px;
+}
