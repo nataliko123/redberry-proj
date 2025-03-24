@@ -1,0 +1,25 @@
+.listItem {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 9px;
+  gap: 6px;
+  color: #333;
+  width: 550px;
+  height: 46px;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.name {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 100%;
+  color: #0d0f10;
+}
+
+.listItem:hover {
+  background-color: #f8f9fa;
+}
