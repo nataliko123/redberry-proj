@@ -1,0 +1,38 @@
+.container {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .label {
+    font-family: FiraGO;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #121A22;
+  }
+  
+  .input {
+    width: 384;
+    height: 42;
+    border-radius: 6px;
+    justify-content: space-between;
+    border-width: 1px;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #CED4DA;
+  }
+  
+  .input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 4px rgba(59, 130, 246, 0.5);
+  }
+  
+  .message {
+    font-size: 14px;
+    margin-top: 6px;
+  }
+  
+  .valid {
+    color: #16a34a; /* Green */
+  }
+  

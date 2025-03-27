@@ -1,36 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./UserCheckbox.module.css";
+import Checkbox from "../../Icon/UserCheckbox";
 import Image from "next/image";
-import SvgComponent from "../../Icon/checkBox";
 
-interface UserCheckboxProps {
-  imageUrl: string;
+type Props = {
+  imageSrc?: string;
   label: string;
-}
+};
 
-const UserCheckbox: React.FC<UserCheckboxProps> = ({ label }) => {
-  const [checked, setChecked] = useState(false);
-
+const UserCheckbox = ({ imageSrc, label }: Props) => {
   return (
-    <div
-      className={styles.checkboxContainer}
-      onClick={() => setChecked(!checked)}
-    >
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={() => setChecked(!checked)}
-        className={styles.hiddenCheckbox}
-      />
-      <div className={styles.customCheckbox}>{checked && <SvgComponent />}</div>
-      <Image
-        src="/avatar.png"
-        alt="User"
-        className={styles.avatar}
-        width={50}
-        height={50}
-      />
-      <span className={styles.label}>{label}</span>
+    <div className={styles.button}>
+      <Checkbox />
+      {imageSrc && <Image src={imageSrc} width={28} height={28} alt="icon" color="#8338EC"/>}
+      <p>{label}</p>
     </div>
   );
 };

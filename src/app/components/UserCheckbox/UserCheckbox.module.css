@@ -1,41 +1,10 @@
-.checkboxContainer {
+.button {
   display: flex;
+  gap: 15px;
   align-items: center;
-  cursor: pointer;
-  gap: 10px;
-  font-family: Arial, sans-serif;
-}
-
-.hiddenCheckbox {
-  display: none;
-}
-
-.customCheckbox {
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #8a2be2; /* Consistent purple border */
-  border-radius: 5px;
-  background-color: transparent; /* Consistent transparent background */
-}
-
-.customCheckbox svg {
-  width: 18px;
-  height: 18px;
-  stroke: #8a2be2; /* Purple checkmark */
-}
-
-.avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-}
-
-.label {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 100%;
-  color: #212529;
+font-family: FiraGO;
+font-weight: 400;
+font-size: 16px;
+line-height: 100%;
+color: #212529;
 }
