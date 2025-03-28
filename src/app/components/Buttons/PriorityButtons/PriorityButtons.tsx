@@ -43,7 +43,7 @@ const getPriorityIcon = (priority: Priority) => {
     case "low":
       return { icon: LowIcon, label: "დაბალი", color: "green" };
     default:
-      return { icon: MediumIcon, label: "Medium", color: "none" };
+      return { icon: MediumIcon, label: "საშუალო", color: "none" };
   }
 };
 

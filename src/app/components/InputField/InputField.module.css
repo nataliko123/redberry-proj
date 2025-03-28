@@ -1,38 +1,80 @@
-.container {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .label {
-    font-family: FiraGO;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 100%;
-    color: #121A22;
-  }
-  
-  .input {
-    width: 384;
-    height: 42;
-    border-radius: 6px;
-    justify-content: space-between;
-    border-width: 1px;
-    padding: 10px;
-    background-color: #FFFFFF;
-    border: 1px solid #CED4DA;
-  }
-  
-  .input:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 0 4px rgba(59, 130, 246, 0.5);
-  }
-  
-  .message {
-    font-size: 14px;
-    margin-top: 6px;
-  }
-  
-  .valid {
-    color: #16a34a; /* Green */
-  }
-  
+.inputContainer {
+  width: 384px; /* ensure px if you want a fixed width */
+  border-radius: 6px;
+  border-width: 1px;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.input {
+  border: 1px solid #ced4da;
+  width: 384;
+  height: 42;
+  justify-content: space-between;
+  border-radius: 6px;
+  border-width: 1px;
+  padding: 10px;
+}
+
+.input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* For invalid input border */
+.invalid {
+  border-color: #fa4d4d !important;
+}
+
+/* Validation text container */
+.validation {
+  font-size: 14px;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* When there is no input */
+.neutral {
+  color: #6c757d; /* gray-ish */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* When input length is valid (>= min and <= max) */
+.valid {
+  color: #08a508; /* green */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* When input length is invalid (< min or > max) */
+.invalid {
+  color: #fa4d4d; /* red */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.inputWithIcon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+.iconInsideInput {
+  position: absolute;
+  left: 356px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none; /* Prevent clicking on it */
+}
