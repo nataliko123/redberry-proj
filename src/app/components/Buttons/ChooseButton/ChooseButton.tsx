@@ -1,12 +1,15 @@
+
+
+
 import React from "react";
 import styles from "./ChooseButton.module.css";
 
-const ChooseButton = (props: any) => {
-  return (
-    <div>
-      <button className={styles.Choosebutton}>{props.title}</button>
-    </div>
-  );
+type Props = {
+  text: string;
+};
+
+const ChooseButton = ({ text }: Props) => {
+  return <div className={styles.Choosebutton}>{text}</div>;
 };
 
 export default ChooseButton;

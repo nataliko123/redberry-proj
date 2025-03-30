@@ -11,11 +11,17 @@ import ProgressButton from "./components/Buttons/ProgressButton/ProgressButton";
 import Card from "./components/Card/Card";
 import NameFilter from "./components/NameFilter/NameFilter";
 import InputField from "./components/InputField/InputField";
+import Column from "./components/Column/Column";
+import Selects from "./components/CustomSelect/CustomSelect";
+import styles from "./page.module.css"
+
 export default function Home() {
   return (
     <>
       <Header />
-      <div style={{ display: "flex", flexDirection: "column" }}>
+           <div className={styles.header}>დავალებების გვერდი</div>
+      <Selects></Selects>
+      {/* <div style={{ display: "flex", flexDirection: "column" }}>
         <CustomButton color="pink" text="დიზაინი" />
         <CustomButton color="orange" text="მარკეტინგი" />
         <CustomButton color="blue" text="ლოგისტიკა" />
@@ -40,41 +46,16 @@ export default function Home() {
       </div>
       <div>
         <NameFilter name="გიორგი გიორგაძე" />
+      </div> */}
+      <div style={{ display: "flex", gap: "52px", marginInline: "auto" , width: "fit-content" ,marginTop: "79px"}}>
+        <Column color={"yellow"}></Column>
+        <Column color={"orange"}></Column>
+        <Column color={"pink"}></Column>
+        <Column color={"blue"}></Column>
       </div>
-      <div style={{ display: "flex", gap: "30px", flexDirection: "column" }}>
-        <div style={{ display: "flex", gap: "52px" }}>
-          <ProgressButton text="დასაწყები" color="yellow" />
-          <ProgressButton text="პროგრესში" color="orange" />
-          <ProgressButton text="მზად ტესტირებისთვის" color="pink" />
-          <ProgressButton text="დასრულებული" color="blue" />
-        </div>
-        <div>
-          <div style={{ display: "flex", gap: "52px", flexWrap: "wrap" }}>
-            <Card priority="medium" color="pink" border="yellow" />
-            <Card priority="high" color="pink" border="orange" />
-            <Card priority="high" color="yellow" border="pink" />
-            <Card priority="high" color="orange" border="blue" />
-
-            <Card priority="high" color="pink" border="yellow" />
-            <Card priority="low" color="orange" border="orange" />
-            <Card priority="high" color="pink" border="pink" />
-            <Card priority="low" color="pink" border="blue" />
-
-            <Card priority="high" color="yellow" border="yellow" />
-            <Card priority="high" color="blue" border="orange" />
-            <Card priority="medium" color="pink" border="pink" />
-            <Card priority="high" color="blue" border="blue" />
-
-            <Card priority="high" color="blue" border="yellow" />
-            <Card priority="high" color="pink" border="orange" />
-            <Card priority="medium" color="yellow" border="pink" />
-            <Card priority="high" color="pink" border="blue" />
-          </div>
-        </div>
-      </div>
-      <div className="flex justify-center items-center h-screen bg-gray-100 ">
+      {/* <div className="flex justify-center items-center h-screen bg-gray-100 ">
         <InputField label={""} minLength={2} maxLength={255} />
-      </div>
+      </div> */}
     </>
   );
 }

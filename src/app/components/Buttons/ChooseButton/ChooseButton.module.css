@@ -1,17 +1,19 @@
+
 .Choosebutton {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px 53px;
+  width: 155;
+  height: 35;
   border-radius: 20px;
-  border: none;
+  align-items: center;
   background-color: #8338ec;
-  color: #fff;
+  justify-content: center;
+  color: rgba(255, 255, 255, 1);
+  font-family: FiraGO;
   font-weight: 400;
   font-size: 16px;
   line-height: 100%;
+  letter-spacing: 0%;
 }
-
-.Choosebutton:hover {
-  background-color: #b588f4;
+.Choosebutton:hover{
+  background-color: rgba(181, 136, 244, 1);
 }

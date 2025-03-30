@@ -1,0 +1,51 @@
+.customSelectContainer {
+  margin: 40px 0 52px 118px;
+  display: flex;
+  width: 688px;
+  border-radius: 10px;
+  border: 1px solid rgba(222, 226, 230, 1);
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+.customSelectButton {
+  display: flex;
+  padding: 12px;
+  gap: 8px;
+  color: black;
+  font-family: FiraGO;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  align-items: center;
+}
+
+.activeState {
+  color: rgba(131, 56, 236, 1);
+}
+
+.activeState img {
+  rotate: 180deg;
+  filter: invert(33%) sepia(131%) saturate(828%) hue-rotate(230deg) brightness(90%) contrast(95%);
+}
+
+.customDropdownList {
+  position: absolute;
+  border: 1px solid #8338ec;
+  background-color: #fff;
+  width: 688px;
+  top: 288px;
+  border-radius: 10px;
+  padding-top: 40px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  gap: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.customDropdownList div:last-child {
+  justify-self: flex-end;
+  align-self: flex-end;
+}
