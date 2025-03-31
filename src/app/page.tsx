@@ -1,25 +1,25 @@
 "use client";
 import React from "react";
 import Header from "./components/Header/Header";
-import CustomButton from "./components/Buttons/CustomButton/CustomButton";
-import PriorityButton from "./components/Buttons/PriorityButtons/PriorityButtons";
-import ReplyButton from "./components/Buttons/ReplyButton/ReplyButton";
-import ChooseButton from "./components/Buttons/ChooseButton/ChooseButton";
-import UserCheckbox from "./components/UserCheckbox/UserCheckbox";
-import UserListItem from "./components/UserListItem/UserListItem";
-import ProgressButton from "./components/Buttons/ProgressButton/ProgressButton";
-import Card from "./components/Card/Card";
-import NameFilter from "./components/NameFilter/NameFilter";
-import InputField from "./components/InputField/InputField";
+// import CustomButton from "./components/Buttons/CustomButton/CustomButton";
+// import PriorityButton from "./components/Buttons/PriorityButtons/PriorityButtons";
+// import ReplyButton from "./components/Buttons/ReplyButton/ReplyButton";
+// import ChooseButton from "./components/Buttons/ChooseButton/ChooseButton";
+// import UserCheckbox from "./components/UserCheckbox/UserCheckbox";
+// import UserListItem from "./components/UserListItem/UserListItem";
+// import ProgressButton from "./components/Buttons/ProgressButton/ProgressButton";
+// import Card from "./components/Card/Card";
+// import NameFilter from "./components/NameFilter/NameFilter";
+// import InputField from "./components/InputField/InputField";
 import Column from "./components/Column/Column";
 import Selects from "./components/CustomSelect/CustomSelect";
-import styles from "./page.module.css"
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <>
       <Header />
-           <div className={styles.header}>დავალებების გვერდი</div>
+      <div className={styles.header}>დავალებების გვერდი</div>
       <Selects></Selects>
       {/* <div style={{ display: "flex", flexDirection: "column" }}>
         <CustomButton color="pink" text="დიზაინი" />
@@ -47,7 +47,15 @@ export default function Home() {
       <div>
         <NameFilter name="გიორგი გიორგაძე" />
       </div> */}
-      <div style={{ display: "flex", gap: "52px", marginInline: "auto" , width: "fit-content" ,marginTop: "79px"}}>
+      <div
+        style={{
+          display: "flex",
+          gap: "52px",
+          marginInline: "auto",
+          width: "fit-content",
+          marginTop: "79px",
+        }}
+      >
         <Column color={"yellow"}></Column>
         <Column color={"orange"}></Column>
         <Column color={"pink"}></Column>
