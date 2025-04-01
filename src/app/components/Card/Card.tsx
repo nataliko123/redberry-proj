@@ -5,31 +5,28 @@
 // import PriorityButtons from "../Buttons/PriorityButtons/PriorityButtons";
 // import Image from "next/image";
 
-// type Border = "pink" | "orange" | "blue" | "yellow";
-// type Priority = "high" | "medium" | "low";
-// type Color = "pink" | "orange" | "blue" | "yellow";
 // type Props = {
-//   priority: Priority;
-//   color: Color;
-//   border: Border;
+//   priority: any;
+//   color: any
+//   border: any;
+//   title: string;
+//   description: string;
+//   date: string;
 // };
 
-// const Card = ({ priority, color, border }: Props) => { // Changed from Task to Card
+// const Card = ({ priority, color, border, title, description, date }: Props) => {
 //   return (
-//     <div className={clsx(Styles.card, Styles[border])}> {/* Updated class name */}
+//     <div className={clsx(Styles.card, Styles[border])}>
 //       <div className={Styles.head}>
 //         <div className={Styles.buttons}>
-//           <PriorityButtons priority={priority} size="small"></PriorityButtons>
-//           <CustomButton color={color} text={"დიზაინი"}></CustomButton>
+//           <PriorityButtons priority={priority} size="small" />
+//           <CustomButton color={color} text={"დიზაინი"} />
 //         </div>
-//         <div className={Styles.date}>22 იანვ, 2022</div>
+//         <div className={Styles.date}>{date}</div>
 //       </div>
 //       <div className={Styles.middle}>
-//         <h2>Redberry-ს საიტის ლენდინგის დიზაინი</h2>
-//         <p>
-//           შექმენი საიტის მთავარი გვერდი, რომელიც მოიცავს მთავარ სექციებს,
-//           ნავიგაციას.
-//         </p>
+//         <h2>{title}</h2>
+//         <p>{description}</p>
 //       </div>
 //       <div className={Styles.bottom}>
 //         <img src="/Ellipse 3892.png" alt="" />
@@ -43,31 +40,57 @@
 // };
 
 // export default Card; // Export Card component instead of Task
+
+
+
+
+
+
 import React, { useState, useEffect } from "react";
 import Styles from "./Card.module.css";
 import { clsx } from "clsx";
 import CustomButton from "../Buttons/CustomButton/CustomButton";
 import PriorityButtons from "../Buttons/PriorityButtons/PriorityButtons";
-import Image from "next/image";
 
 type Border = "pink" | "orange" | "blue" | "yellow";
-type Priority = "high" | "medium" | "low";
+type Priority = "დაბალი" | "საშუალო" | "მაღალი"; // Using the actual API strings
 type Color = "pink" | "orange" | "blue" | "yellow";
+
+type TaskData = {
+  id: number;
+  name: string;
+  description: string;
+  due_date: string;
+  department: {
+    id: number;
+    name: string;
+  };
+  employee: {
+    id: number;
+    name: string;
+    surname: string;
+    avatar: string;
+    department: {
+      id: number;
+      name: string;
+    };
+  };
+  status: {
+    id: number;
+    name: string;
+  };
+  priority: {
+    id: number;
+    name: Priority;
+    icon: string;
+  };
+  total_comments: number;
+};
+
 type Props = {
   priority: Priority;
   color: Color;
   border: Border;
-};
-
-type TaskData = {
-  id: number;
-  priority: Priority;
-  color: Color;
-  border: Border;
-  title: string;
-  description: string;
-  createdAt: string;
-  comments: number;
 };
 
 const Card = ({ priority, color, border }: Props) => {
@@ -78,43 +101,42 @@ const Card = ({ priority, color, border }: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setIsLoading(true); // Start loading
+        setIsLoading(true);
         const response = await fetch(
           "https://momentum.redberryinternship.ge/api/tasks",
           {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer 9e8fc53a-04c7-4999-af88-b94216f671c4`, // Add the token here
+              Authorization: `Bearer 9e8fc53a-04c7-4999-af88-b94216f671c4`,
             },
           }
         );
 
-        // Check if the response is successful
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        const data = await response.json();
+        const data: TaskData[] = await response.json();
+        console.log("Fetched Data:", data);
 
-        // Validate that data is an array and has at least one item
         if (Array.isArray(data) && data.length > 0) {
-          setTaskData(data[0]); // Set the first task
+          // Use first task for demo purposes
+          setTaskData(data[0]);
         } else {
-          setError("No tasks found in the response");
+          throw new Error("No tasks found in the response");
         }
-      } catch (error) {
-        // Handle fetch or parsing errors
+      } catch (error: any) {
+        console.error("Fetch error:", error);
         setError(error.message || "An error occurred while fetching data");
       } finally {
-        setIsLoading(false); // Stop loading, regardless of success or failure
+        setIsLoading(false);
       }
     };
 
     fetchData();
-  }, []); // Empty dependency array to run once on mount
+  }, []);
 
-  // Render based on state
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -127,24 +149,50 @@ const Card = ({ priority, color, border }: Props) => {
     return <div>No task data available</div>;
   }
 
+  const avatarSrc = taskData.employee.avatar || "/Ellipse 3892.png";
+  const fullName = `${taskData.employee.name} ${taskData.employee.surname}`;
+
   return (
-    <div className={clsx(Styles.card, Styles[taskData.border])}>
+    <div className={clsx(Styles.card, Styles[border])}>
       <div className={Styles.head}>
         <div className={Styles.buttons}>
-          <PriorityButtons priority={taskData.priority} size="small" />
-          <CustomButton color={taskData.color} text={"დიზაინი"} />
+          <PriorityButtons 
+            priority={taskData.priority.name.toLowerCase() as Priority} 
+            size="small" 
+          />
+          <CustomButton 
+            color={color} 
+            text={taskData.department.name} 
+          />
         </div>
-        <div className={Styles.date}>{taskData.createdAt}</div>
+        <div className={Styles.date}>
+          {new Date(taskData.due_date).toLocaleDateString()}
+        </div>
       </div>
       <div className={Styles.middle}>
-        <h2>{taskData.title}</h2>
+        <h2>{taskData.name}</h2>
         <p>{taskData.description}</p>
       </div>
       <div className={Styles.bottom}>
-        <img src="/Ellipse 3892.png" alt="" />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src={avatarSrc}
+            alt="Employee Avatar"
+            style={{
+              marginRight: "10px",
+              width: "40px",
+              height: "40px",
+              borderRadius: "50%",
+              objectFit: "cover",
+            }}
+          />
+          <span style={{ fontSize: "16px", fontWeight: "bold", color: "#333" }}>
+            {fullName}
+          </span>
+        </div>
         <div className={Styles.comments}>
-          <img src="/Comments.png" alt="" />
-          <p>{taskData.comments}</p>
+          <img src="/Comments.png" alt="Comments" />
+          <p>{taskData.total_comments}</p>
         </div>
       </div>
     </div>

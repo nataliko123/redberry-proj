@@ -1,52 +1,69 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
-// import CustomButton from "./components/Buttons/CustomButton/CustomButton";
-// import PriorityButton from "./components/Buttons/PriorityButtons/PriorityButtons";
-// import ReplyButton from "./components/Buttons/ReplyButton/ReplyButton";
-// import ChooseButton from "./components/Buttons/ChooseButton/ChooseButton";
-// import UserCheckbox from "./components/UserCheckbox/UserCheckbox";
-// import UserListItem from "./components/UserListItem/UserListItem";
-// import ProgressButton from "./components/Buttons/ProgressButton/ProgressButton";
-// import Card from "./components/Card/Card";
-// import NameFilter from "./components/NameFilter/NameFilter";
-// import InputField from "./components/InputField/InputField";
 import Column from "./components/Column/Column";
 import Selects from "./components/CustomSelect/CustomSelect";
+import Card from "./components/Card/Card";
 import styles from "./page.module.css";
 
+type Task = {
+  id: number;
+  priority: "high" | "medium" | "low";
+  color: "pink" | "orange" | "blue" | "yellow";
+  border: "pink" | "orange" | "blue" | "yellow";
+  title: string;
+  description: string;
+  date: string;
+};
+
 export default function Home() {
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  useEffect(() => {
+    fetch("https://momentum.redberryinternship.ge/api/tasks", {
+      method: "GET",
+      headers: {
+        "Authorization": `9e92a1dc-bd5f-4f23-9d08-8305a6fd4685`,  // Replace with your actual token
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data); // Check API response in console
+        setTasks(data); // Store API data
+      })
+      .catch((error) => console.error("Error fetching tasks:", error));
+  }, []);
+
   return (
     <>
       <Header />
       <div className={styles.header}>დავალებების გვერდი</div>
-      <Selects></Selects>
-      {/* <div style={{ display: "flex", flexDirection: "column" }}>
-        <CustomButton color="pink" text="დიზაინი" />
-        <CustomButton color="orange" text="მარკეტინგი" />
-        <CustomButton color="blue" text="ლოგისტიკა" />
-        <CustomButton color="yellow" text="ინფ.ტექ." />
+      <Selects />
+
+      {/* Display Fetched Tasks */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "20px",
+          marginTop: "40px",
+          paddingInline: "20px",
+        }}
+      >
+        {tasks.map((task) => (
+          <Card
+            key={task.id}
+            priority={task.priority}
+            color={task.color}
+            border={task.border}
+            title={task.title}
+            description={task.description}
+            date={task.date}
+          />
+        ))}
       </div>
-      <PriorityButton priority="medium" size="small" />
-      <PriorityButton priority="low" size="small" />
-      <PriorityButton priority="high" size="small"></PriorityButton>
-      <PriorityButton priority="medium" size="big" />
-      <PriorityButton priority="low" size="big" />
-      <PriorityButton priority="high" size="big"></PriorityButton>{" "}
-      <ReplyButton />
-      <ChooseButton title="Button" />
-      <div>
-        <UserCheckbox
-          imageSrc="/Coworker.png"
-          label="მარკეტინგის დეპარტამენტი"
-        />
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        <UserListItem imageUrl="/user.jpg" name="თამარ კვანტალია" />
-      </div>
-      <div>
-        <NameFilter name="გიორგი გიორგაძე" />
-      </div> */}
+
       <div
         style={{
           display: "flex",
@@ -56,14 +73,11 @@ export default function Home() {
           marginTop: "79px",
         }}
       >
-        <Column color={"yellow"}></Column>
-        <Column color={"orange"}></Column>
-        <Column color={"pink"}></Column>
-        <Column color={"blue"}></Column>
+        <Column color={"yellow"} />
+        <Column color={"orange"} />
+        <Column color={"pink"} />
+        <Column color={"blue"} />
       </div>
-      {/* <div className="flex justify-center items-center h-screen bg-gray-100 ">
-        <InputField label={""} minLength={2} maxLength={255} />
-      </div> */}
     </>
   );
 }
