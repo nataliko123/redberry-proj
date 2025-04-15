@@ -3,12 +3,14 @@ import styles from "./UserCheckbox.module.css";
 import Checkbox from "../../Icon/UserCheckbox"; // Assuming this is your custom checkbox component
 import Image from "next/image";
 
-type Props = {
+type NewType = {
   checked: boolean;
   onClick: () => void;
   imageSrc?: string;
   label: string;
 };
+
+type Props = NewType;
 
 const UserCheckbox = ({ checked, onClick, imageSrc, label }: Props) => {
   return (

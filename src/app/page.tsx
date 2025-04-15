@@ -5,7 +5,8 @@ import Column from "./components/Column/Column";
 import Selects from "./components/CustomSelect/CustomSelect";
 import Card from "./components/Card/Card";
 import styles from "./page.module.css";
-
+import TaskList from "./components/TaskList/TaskList";
+import CustomSelect from "./components/CustomSelect/CustomSelect";
 type Task = {
   id: number;
   priority: "high" | "medium" | "low";
@@ -23,7 +24,7 @@ export default function Home() {
     fetch("https://momentum.redberryinternship.ge/api/tasks", {
       method: "GET",
       headers: {
-        "Authorization": `9e92a1dc-bd5f-4f23-9d08-8305a6fd4685`,  // Replace with your actual token
+        Authorization: `Bearer 9e92a1dc-bd5f-4f23-9d08-8305a6fd4685`, // Replace with your actual token
         "Content-Type": "application/json",
       },
     })
@@ -39,39 +40,13 @@ export default function Home() {
     <>
       <Header />
       <div className={styles.header}>დავალებების გვერდი</div>
-      <Selects />
-
-      {/* Display Fetched Tasks */}
+      <CustomSelect />
       <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "20px",
-          marginTop: "40px",
-          paddingInline: "20px",
-        }}
       >
-        {tasks.map((task) => (
-          <Card
-            key={task.id}
-            priority={task.priority}
-            color={task.color}
-            border={task.border}
-            title={task.title}
-            description={task.description}
-            date={task.date}
-          />
-        ))}
+        <TaskList />
       </div>
 
       <div
-        style={{
-          display: "flex",
-          gap: "52px",
-          marginInline: "auto",
-          width: "fit-content",
-          marginTop: "79px",
-        }}
       >
         <Column color={"yellow"} />
         <Column color={"orange"} />
